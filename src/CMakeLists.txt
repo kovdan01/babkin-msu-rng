@@ -1,7 +1,7 @@
 project(check-quality LANGUAGES CXX)
 
-set(SOURCES main.cpp)
-set(HEADERS)
+set(SOURCES main.cpp utils.cpp)
+set(HEADERS utils.h)
 
 add_executable(check-quality ${SOURCES} ${HEADERS})
 
