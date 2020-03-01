@@ -8,6 +8,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(THIRD_PARTY_DIR ${CMAKE_CURRENT_LIST_DIR}/3rd_party)
 
 find_package(GTest REQUIRED)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GMP REQUIRED)
 
 set(Babkin_ROOT_DIR ${CMAKE_CURRENT_LIST_DIR}/babkin)
 set(Babkin_INCLUDE_DIR ${Babkin_ROOT_DIR})
