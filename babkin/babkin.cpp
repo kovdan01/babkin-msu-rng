@@ -1,5 +1,6 @@
 #include "babkin.h"
 #include <cassert>
+#include <tuple>
 
 Babkin::Babkin(std::size_t block_size)
     : m_block_size(block_size)
@@ -68,6 +69,11 @@ std::ostream& operator<<(std::ostream& stream, const Babkin::CodePair& pair)
 {
     stream << "{ k = " << pair.letter_count << ", b_k = " << pair.binomial_sum << " }";
     return stream;
+}
+
+bool operator==(const Babkin::CodePair& lhs, const Babkin::CodePair& rhs)
+{
+    return std::tie(lhs.letter_count, lhs.binomial_sum) == std::tie(rhs.letter_count, rhs.binomial_sum);
 }
 
 // unused

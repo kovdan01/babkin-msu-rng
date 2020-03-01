@@ -41,4 +41,6 @@ private:
 std::ostream& operator<<(std::ostream& stream, const Babkin::CodeBlock& block);
 std::ostream& operator<<(std::ostream& stream, const Babkin::CodePair& pair);
 
+bool operator==(const Babkin::CodePair& lhs, const Babkin::CodePair& rhs);
+
 #endif // BABKIN_H
