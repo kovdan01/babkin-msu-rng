@@ -1,6 +1,6 @@
 #include "babkin.h"
+#include <gtest/gtest.h>
 #include <tuple>
-#include "gtest/gtest.h"
 
 struct BabkinTestSuite : public ::testing::TestWithParam<std::tuple<Babkin::NBlock, Babkin::CodePair>>
 {
@@ -16,7 +16,8 @@ TEST_P(BabkinTestSuite, CheckEncodingToPair)
     ASSERT_EQ(babkin.encode(input_block), ethalon);
 }
 
-INSTANTIATE_TEST_SUITE_P(
+INSTANTIATE_TEST_CASE_P
+(
     Babkin,
     BabkinTestSuite,
     ::testing::Values

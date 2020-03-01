@@ -7,9 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(THIRD_PARTY_DIR ${CMAKE_CURRENT_LIST_DIR}/3rd_party)
 
-set(GTest_ROOT_DIR ${THIRD_PARTY_DIR}/GTest)
-set(GTest_INCLUDE_DIR ${GTest_ROOT_DIR}/googletest/include)
-add_subdirectory(${GTest_ROOT_DIR})
+find_package(GTest REQUIRED)
 
 set(Babkin_ROOT_DIR ${CMAKE_CURRENT_LIST_DIR}/babkin)
 set(Babkin_INCLUDE_DIR ${Babkin_ROOT_DIR})
