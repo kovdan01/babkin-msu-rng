@@ -2,7 +2,9 @@
 #define BABKIN_H
 
 #include "pascal_triangle.h"
+
 #include <gmpxx.h>
+
 #include <cstdint>
 #include <vector>
 #include <ostream>

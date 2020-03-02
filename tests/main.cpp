@@ -1,5 +1,7 @@
 #include "babkin.h"
+
 #include <gtest/gtest.h>
+
 #include <tuple>
 
 using Babkin64 = Babkin<std::uint64_t>;
