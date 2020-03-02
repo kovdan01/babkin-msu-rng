@@ -3,6 +3,7 @@ project(babkin LANGUAGES CXX)
 set(SOURCES babkin.cpp)
 set(HEADERS babkin.h pascal_triangle.h)
 
-add_library(babkin ${SOURCES} ${HEADERS})
-target_link_libraries(babkin gmp)
-target_include_directories(babkin PRIVATE ${GMP_INCLUDE_DIR})
+add_library(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${GMP_INCLUDE_DIR})
+target_link_libraries(${PROJECT_NAME} PRIVATE gmp)

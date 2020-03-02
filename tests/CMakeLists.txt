@@ -4,8 +4,12 @@ project(tests LANGUAGES CXX)
 set(SOURCES main.cpp)
 set(HEADERS)
 
-add_executable(tests ${SOURCES} ${HEADERS})
-target_include_directories(tests PRIVATE ${Babkin_INCLUDE_DIR} ${GTest_INCLUDE_DIR})
-target_link_libraries(tests babkin gtest)
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
-gtest_add_tests(TARGET tests)
+target_include_directories(${PROJECT_NAME} PRIVATE ${Babkin_INCLUDE_DIR})
+target_link_libraries(${PROJECT_NAME} PRIVATE babkin)
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${GTest_INCLUDE_DIR})
+target_link_libraries(${PROJECT_NAME} PRIVATE gtest)
+
+gtest_add_tests(TARGET ${PROJECT_NAME})
