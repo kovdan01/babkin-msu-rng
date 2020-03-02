@@ -5,6 +5,7 @@
 #include <boost/program_options.hpp>
 
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <algorithm>
 #include <stdexcept>
@@ -20,8 +21,9 @@ void job(std::size_t block_size, std::size_t blocks_count, double probability, c
     std::vector<std::uint8_t> cumulative;
     for (std::size_t i = 0; i < blocks_count; ++i)
     {
-        if (i % 1'000 == 0 || i + 1 == blocks_count)
-            std::cout << "Generating data from block " << i << "..." << std::endl;
+        if (i % 100'000 == 0 || i + 1 == blocks_count)
+            std::cout << "[ " << std::internal << std::setprecision(2) << std::fixed << std::setw(6)
+                      << 100.0 * i / blocks_count << "% ] Generating data from block " << i << "..." << std::endl;
         typename Babkin<Integer>::NBlock block = generate_block<mpz_class>(block_size, probability);
         typename Babkin<Integer>::CodeBlock code_block = babkin.get_random_block(block);
         std::copy(code_block.begin(), code_block.end(), std::back_inserter(cumulative));
