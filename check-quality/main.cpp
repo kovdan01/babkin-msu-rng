@@ -1,4 +1,5 @@
 #include "babkin.h"
+#include "utils.h"
 #include <gmpxx.h>
 #include <iostream>
 #include <vector>
@@ -9,18 +10,6 @@
 #include <map>
 
 using BabkinLong = Babkin<mpz_class>;
-
-BabkinLong::NBlock generate_block(std::size_t size, double one_probability = 0.5)
-{
-    static std::uniform_real_distribution<double> dist(0, 1);
-    static std::mt19937 prng(std::random_device{}());
-
-    BabkinLong::NBlock answer(size);
-    for (std::uint8_t& elem : answer)
-        elem = (dist(prng) < one_probability);
-
-    return answer;
-}
 
 int main()
 {
@@ -36,7 +25,7 @@ int main()
         std::size_t blocks_count = 1'000;
         percentage_to_blocks[percentage] = std::vector<BabkinLong::NBlock>(blocks_count);
         for (BabkinLong::NBlock& block : percentage_to_blocks[percentage])
-            block = generate_block(block_size, percentage / 100.0);
+            block = generate_block<mpz_class>(block_size, percentage / 100.0);
     }
     std::cout << "Finish generating blocks\n";
 

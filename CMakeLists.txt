@@ -15,5 +15,10 @@ set(Babkin_ROOT_DIR ${CMAKE_CURRENT_LIST_DIR}/babkin)
 set(Babkin_INCLUDE_DIR ${Babkin_ROOT_DIR})
 add_subdirectory(${Babkin_ROOT_DIR})
 
-add_subdirectory(src)
+set(Utils_ROOT_DIR ${CMAKE_CURRENT_LIST_DIR}/utils)
+set(Utils_INCLUDE_DIR ${Utils_ROOT_DIR})
+add_subdirectory(${Utils_ROOT_DIR})
+
+add_subdirectory(check-quality)
+add_subdirectory(generate-data)
 add_subdirectory(tests)
