@@ -77,13 +77,13 @@ public:
 
     [[nodiscard]] CodeBlock get_random_block(const CodePair& pair) const
     {
-        mpz_class block_class_size = m_pascal_triangle.binomial(m_block_size, pair.letter_count);
+        Integer block_class_size = m_pascal_triangle.binomial(m_block_size, pair.letter_count);
         std::uint64_t binomial_max_bit = 0;
-        for (mpz_class mask = 0b1; pair.binomial_sum + 1 > (block_class_size & mask); mask <<= 1, mask |= 1)
+        for (Integer mask = 0b1; pair.binomial_sum + 1 > (block_class_size & mask); mask <<= 1, mask |= 1)
             ++binomial_max_bit;
 
         Babkin::CodeBlock answer(binomial_max_bit + 1);
-        mpz_class binomial_bit_mask = (mpz_class(1) << binomial_max_bit);
+        Integer binomial_bit_mask = (Integer{1} << binomial_max_bit);
         for (std::size_t i = 0; i != answer.size(); ++i, binomial_bit_mask >>= 1)
             answer[i] = ((pair.binomial_sum & binomial_bit_mask) != 0);
 
