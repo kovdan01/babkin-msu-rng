@@ -1,4 +1,5 @@
 #include "utils.h"
+
 #include <fstream>
 
 std::vector<std::uint8_t> compress_bits(const std::vector<std::uint8_t>& bits)
@@ -14,7 +15,7 @@ std::vector<std::uint8_t> compress_bits(const std::vector<std::uint8_t>& bits)
     return answer;
 }
 
-void write_to_file(const std::vector<std::uint8_t>& bytes, const std::string& filename)
+void write_bytes_to_file(const std::vector<std::uint8_t>& bytes, const std::string& filename)
 {
     std::ofstream file(filename, std::ios_base::binary);
     for (std::uint8_t byte : bytes)

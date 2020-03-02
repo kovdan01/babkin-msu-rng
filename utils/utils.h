@@ -2,6 +2,7 @@
 #define UTILS_H
 
 #include "babkin.h"
+
 #include <vector>
 #include <cstdint>
 #include <string>
@@ -22,7 +23,7 @@ typename Babkin<Integer>::NBlock generate_block(std::size_t size, double one_pro
 
 std::vector<std::uint8_t> compress_bits(const std::vector<std::uint8_t>& bits);
 
-void write_to_file(const std::vector<std::uint8_t>& bytes, const std::string& filename);
+void write_bytes_to_file(const std::vector<std::uint8_t>& bytes, const std::string& filename);
 
 
 #endif // UTILS_H
