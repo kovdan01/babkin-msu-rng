@@ -9,6 +9,7 @@
 #include <vector>
 #include <algorithm>
 #include <stdexcept>
+#include <cmath>
 
 template <typename Integer>
 void job(std::size_t block_size, std::size_t blocks_count, double probability, const std::string& output_filename)
@@ -19,9 +20,10 @@ void job(std::size_t block_size, std::size_t blocks_count, double probability, c
 
     std::cout << "Start generating data..." << std::endl;
     std::vector<std::uint8_t> cumulative;
+    std::size_t output_interval = static_cast<std::size_t>(5'000'000'000 / std::pow(std::log(block_size), 7)); // strange heuristic, don't try to understand it
     for (std::size_t i = 0; i < blocks_count; ++i)
     {
-        if (i % 100'000 == 0 || i + 1 == blocks_count)
+        if (i % output_interval == 0 || i + 1 == blocks_count)
             std::cout << "[ " << std::internal << std::setprecision(2) << std::fixed << std::setw(6)
                       << 100.0 * i / blocks_count << "% ] Generating data from block " << i << "..." << std::endl;
         typename Babkin<Integer>::NBlock block = generate_block<mpz_class>(block_size, probability);
